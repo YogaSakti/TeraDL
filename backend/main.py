@@ -10,6 +10,7 @@ CORS(app=app)
 #--> Local module
 from python.terabox1 import TeraboxFile as TF1, TeraboxLink as TL1
 from python.terabox2 import TeraboxFile as TF2, TeraboxLink as TL2, TeraboxSession as TS
+import os
 
 #--> Main
 @app.route(rule='/')
@@ -90,7 +91,8 @@ def getLink() -> Response:
 
 #--> Initialization
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.getenv('PORT', 5000))
+    app.run(debug=True, port=port)
 
 # https://1024terabox.com/s/1eBHBOzcEI-VpUGA_xIcGQg
 # https://dm.terabox.com/indonesian/sharing/link?surl=KKG3LQ7jaT733og97CBcGg
